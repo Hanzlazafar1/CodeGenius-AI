@@ -9,18 +9,18 @@ import BugAnalysisAgent from './pages/BugAnalysisAgent'
 import SRSAgent from './pages/SRSAgent'
 
 const ROUTES = [
-  { path: '/',             element: <Home />,            title: 'Mission Control',        subtitle: 'Select an intelligence engine to begin session' },
-  { path: '/algorithm',    element: <AlgorithmAgent />,  title: 'Algorithm Engineering',   subtitle: 'High-performance logic synthesis & complexity audit' },
-  { path: '/code-explain', element: <CodeExplainAgent />, title: 'Cognitive Explainer',    subtitle: 'Structural deconstruction & semantic analysis' },
-  { path: '/bug-analysis', element: <BugAnalysisAgent />, title: 'Diagnostic Neural',      subtitle: 'Root cause classification & corrective synthesis' },
-  { path: '/srs',          element: <SRSAgent />,         title: 'Requirement Parser',    subtitle: 'Functional extraction & specification mapping' },
+  { path: '/', element: <Home />, title: 'Autonomous Dev Layer', subtitle: 'Real-time software synthesis and structural audit' },
+  { path: '/algorithm', element: <AlgorithmAgent />, title: 'Algorithm Engineering', subtitle: 'High-performance logic synthesis & complexity audit' },
+  { path: '/code-explain', element: <CodeExplainAgent />, title: 'Cognitive Explainer', subtitle: 'Structural deconstruction & semantic analysis' },
+  { path: '/bug-analysis', element: <BugAnalysisAgent />, title: 'Diagnostic Neural', subtitle: 'Root cause classification & corrective synthesis' },
+  { path: '/srs', element: <SRSAgent />, title: 'Requirement Parser', subtitle: 'Functional extraction & specification mapping' },
 ]
 
 export { ROUTES }
 
 function AnimatedRoutes() {
   const location = useLocation()
-  
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>

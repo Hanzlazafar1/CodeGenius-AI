@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { 
-  Terminal, 
-  MessageSquare, 
-  ShieldCheck, 
-  ClipboardCheck, 
-  Cpu, 
-  Globe, 
-  Rocket, 
-  Layers, 
-  Radio, 
-  Zap 
+import {
+  Terminal,
+  MessageSquare,
+  ShieldCheck,
+  ClipboardCheck,
+  Cpu,
+  Globe,
+  Rocket,
+  Layers,
+  Radio,
+  Zap
 } from 'lucide-react'
 
 const AGENTS = [
@@ -76,7 +76,7 @@ export default function Home() {
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <motion.div 
+      <motion.div
         className="home-hero"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -88,18 +88,18 @@ export default function Home() {
         </div>
         <h1>Next-Gen Software Control</h1>
         <p>
-          State-of-the-art AI agents powered by <strong>Groq LPU</strong> technology and 
-          <strong> LangGraph</strong> runtime. Real-time engineering synthesis at scale.
+          State-of-the-art AI agents powered by <strong>Groq</strong> and
+          <strong> LangGraph</strong>. Real-time engineering synthesis at scale.
         </p>
 
         <div className="home-tech-stack" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           {TECH.map((t) => (
-            <div key={t.label} className="tech-chip" style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: 8, 
-              padding: '6px 12px', 
-              background: 'rgba(255,255,255,0.03)', 
+            <div key={t.label} className="tech-chip" style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '6px 12px',
+              background: 'rgba(255,255,255,0.03)',
               border: '1px solid var(--glass-border)',
               borderRadius: '8px',
               fontSize: '11px',
@@ -114,7 +114,7 @@ export default function Home() {
       </motion.div>
 
       {/* Stats Bar */}
-      <motion.div 
+      <motion.div
         className="stats-bar glass-card"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -134,7 +134,7 @@ export default function Home() {
       </motion.div>
 
       {/* Agents Grid */}
-      <motion.div 
+      <motion.div
         className="agents-grid"
         variants={container}
         initial="hidden"
@@ -142,12 +142,12 @@ export default function Home() {
       >
         {AGENTS.map((agent) => (
           <motion.div key={agent.path} variants={item}>
-            <Link 
-              to={agent.path} 
+            <Link
+              to={agent.path}
               className="agent-card"
             >
-              <div 
-                className="agent-card-icon" 
+              <div
+                className="agent-card-icon"
                 style={{ color: agent.color }}
               >
                 {agent.icon}
@@ -159,7 +159,7 @@ export default function Home() {
               <div className="agent-card-workflow">
                 {agent.steps.map((step, i) => (
                   <span key={step} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                    <span 
+                    <span
                       className="workflow-tag"
                       style={{ color: agent.color, borderColor: `${agent.color}40`, background: `${agent.color}10` }}
                     >
@@ -174,24 +174,25 @@ export default function Home() {
         ))}
       </motion.div>
 
-      {/* Architecture Architecture Architecture */}
-      <motion.div 
-        className="glass-card" 
-        style={{ textAlign: 'center', padding: '32px', marginBottom: 40, borderStyle: 'dashed' }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
+      {/* Footer Attribution Section */}
+      <motion.div
+        className="attribution-card"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.8, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
       >
-        <p style={{ fontSize: 10, fontWeight: 700, color: 'var(--text-muted)', letterSpacing: 1, marginBottom: 16 }}>SYSTEM TOPOLOGY</p>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, flexWrap: 'wrap', fontSize: 12, color: 'var(--text-secondary)' }}>
-          <span style={{ color: 'var(--primary)' }}>Frontend Edge</span>
-          <span style={{ opacity: 0.2 }}>•</span>
-          <span style={{ color: 'var(--secondary)' }}>API Gateway</span>
-          <span style={{ opacity: 0.2 }}>•</span>
-          <span style={{ color: '#f59e0b' }}>Neural Graph</span>
-          <span style={{ opacity: 0.2 }}>•</span>
-          <span style={{ color: 'var(--accent)' }}>Hardware LPU</span>
+        <div className="attribution-glow" />
+        <p className="attribution-subtitle"></p>
+        <div className="attribution-main">
+          <span>Made with</span>
+          <span style={{ fontSize: '18px' }}>❤️</span>
+          <span>by</span>
+          <span className="name-hanzla">Hanzla</span>
+          <span className="name-separator">and</span>
+          <span className="name-areeba">Areeba</span>
         </div>
+        <div className="attribution-divider" />
+        <p className="attribution-tagline">Crafting the future of software intelligence.</p>
       </motion.div>
     </div>
   )

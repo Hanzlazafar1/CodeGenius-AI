@@ -104,6 +104,9 @@ export default function Sidebar() {
           <div className="status-dot" />
           <span>Operational</span>
         </div>
+        <div className="sidebar-attribution">
+          <span>Made with ❤️ by Hanzla & Areeba</span>
+        </div>
       </div>
     </aside>
   )

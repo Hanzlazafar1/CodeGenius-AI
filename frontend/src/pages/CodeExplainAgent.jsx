@@ -113,7 +113,7 @@ export default function CodeExplainAgent() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 className="glass-card"
-                style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 400, borderStyle: 'dashed' }}
+                style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 320, borderStyle: 'dotted' }}
               >
                 <div style={{ padding: 24, background: 'rgba(255,255,255,0.02)', borderRadius: '50%', marginBottom: 20 }}>
                   <MessageSquare size={32} opacity={0.2} />
