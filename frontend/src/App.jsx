@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import { ThemeProvider } from './context/ThemeContext'
 import Sidebar from './components/Sidebar'
 import Header from './components/Header'
 import Home from './pages/Home'
@@ -50,14 +51,16 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div className="app-shell">
-        <div className="mesh-bg" />
-        <Sidebar />
-        <main className="main-content">
-          <AnimatedRoutes />
-        </main>
-      </div>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <div className="app-shell">
+          <div className="mesh-bg" />
+          <Sidebar />
+          <main className="main-content">
+            <AnimatedRoutes />
+          </main>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }

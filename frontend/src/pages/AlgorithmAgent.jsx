@@ -130,7 +130,7 @@ export default function AlgorithmAgent() {
                 className="glass-card"
                 style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 320, borderStyle: 'dotted' }}
               >
-                <div style={{ padding: 24, background: 'rgba(255,255,255,0.02)', borderRadius: '50%', marginBottom: 20 }}>
+                <div style={{ padding: 24, background: 'var(--toggle-bg)', borderRadius: '50%', marginBottom: 20 }}>
                   <Terminal size={32} opacity={0.2} />
                 </div>
                 <h3 style={{ fontSize: 16, marginBottom: 8 }}>Workspace Idle</h3>

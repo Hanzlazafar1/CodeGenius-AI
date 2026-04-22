@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { 
-  LayoutDashboard, 
-  Zap, 
-  Search, 
-  Bug, 
+import {
+  LayoutDashboard,
+  Zap,
+  Search,
+  Bug,
   FileText,
   Activity,
   Terminal,
@@ -60,7 +60,7 @@ export default function Sidebar() {
           {({ isActive }) => (
             <>
               {isActive && (
-                <motion.div 
+                <motion.div
                   layoutId="sidebar-indicator"
                   className="nav-indicator"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
@@ -74,15 +74,15 @@ export default function Sidebar() {
 
         <div className="sidebar-section-label">Engines</div>
         {AGENTS.map((agent) => (
-          <NavLink 
-            key={agent.path} 
-            to={agent.path} 
+          <NavLink
+            key={agent.path}
+            to={agent.path}
             className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
           >
             {({ isActive }) => (
               <>
                 {isActive && (
-                  <motion.div 
+                  <motion.div
                     layoutId="sidebar-indicator"
                     className="nav-indicator"
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
@@ -105,7 +105,7 @@ export default function Sidebar() {
           <span>Operational</span>
         </div>
         <div className="sidebar-attribution">
-          <span>Made with ❤️ by Hanzla & Areeba</span>
+          <span>Made with ❤️</span>
         </div>
       </div>
     </aside>

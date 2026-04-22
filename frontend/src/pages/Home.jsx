@@ -99,7 +99,7 @@ export default function Home() {
               alignItems: 'center',
               gap: 8,
               padding: '6px 12px',
-              background: 'rgba(255,255,255,0.03)',
+              background: 'var(--toggle-bg)',
               border: '1px solid var(--glass-border)',
               borderRadius: '8px',
               fontSize: '11px',
@@ -186,10 +186,10 @@ export default function Home() {
         <div className="attribution-main">
           <span>Made with</span>
           <span style={{ fontSize: '18px' }}>❤️</span>
-          <span>by</span>
-          <span className="name-hanzla">Hanzla</span>
-          <span className="name-separator">and</span>
-          <span className="name-areeba">Areeba</span>
+          <span></span>
+          <span className="name-hanzla"></span>
+          <span className="name-separator"></span>
+          <span className="name-areeba"></span>
         </div>
         <div className="attribution-divider" />
         <p className="attribution-tagline">Crafting the future of software intelligence.</p>

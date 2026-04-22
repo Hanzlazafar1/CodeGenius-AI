@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { vscDarkPlus, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { Copy, Check, Terminal } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
 
 export default function CodeBlock({ code, language = 'python' }) {
   const [copied, setCopied] = useState(false)
+  const { theme } = useTheme()
+
+  const isDark = theme === 'dark'
 
   const handleCopy = async () => {
     try {
@@ -17,31 +21,47 @@ export default function CodeBlock({ code, language = 'python' }) {
   }
 
   return (
-    <div className="code-block-wrapper" style={{ margin: '16px 0', border: '1px solid var(--glass-border)', borderRadius: '12px', overflow: 'hidden', background: '#0d0d0d' }}>
-      <div className="code-block-header" style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '10px 16px',
-        background: 'rgba(255, 255, 255, 0.02)',
-        borderBottom: '1px solid var(--glass-border)'
-      }}>
+    <div
+      className="code-block-wrapper"
+      style={{
+        margin: '16px 0',
+        border: '1px solid var(--glass-border)',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        background: isDark ? '#0d0d0d' : '#f8f8fc',
+        transition: 'background 0.3s ease, border-color 0.3s ease',
+      }}
+    >
+      <div
+        className="code-block-header"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '10px 16px',
+          background: isDark ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.03)',
+          borderBottom: '1px solid var(--glass-border)',
+        }}
+      >
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Terminal size={14} color="var(--text-muted)" />
-          <span style={{
-            fontSize: 11,
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '0.5px',
-            color: 'var(--text-secondary)',
-            fontFamily: 'var(--font-mono)'
-          }}>
+          <span
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px',
+              color: 'var(--text-secondary)',
+              fontFamily: 'JetBrains Mono, monospace',
+            }}
+          >
             {language}
           </span>
         </div>
 
         <button
           onClick={handleCopy}
+          className="code-copy-btn"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -49,15 +69,14 @@ export default function CodeBlock({ code, language = 'python' }) {
             padding: '4px 8px',
             borderRadius: '6px',
             border: '1px solid var(--glass-border)',
-            background: 'rgba(255, 255, 255, 0.03)',
+            background: 'var(--toggle-bg)',
             color: copied ? 'var(--primary)' : 'var(--text-secondary)',
             fontSize: '11px',
             fontWeight: 600,
             cursor: 'pointer',
-            transition: 'all 0.2s ease'
+            transition: 'all 0.2s ease',
+            fontFamily: 'inherit',
           }}
-          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'}
-          onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)'}
         >
           {copied ? <Check size={12} /> : <Copy size={12} />}
           {copied ? 'Copied' : 'Copy'}
@@ -66,23 +85,23 @@ export default function CodeBlock({ code, language = 'python' }) {
 
       <SyntaxHighlighter
         language={language.toLowerCase()}
-        style={vscDarkPlus}
+        style={isDark ? vscDarkPlus : oneLight}
         customStyle={{
           margin: 0,
           padding: '20px',
           fontSize: '13px',
           lineHeight: '1.6',
           background: 'transparent',
-          fontFamily: 'var(--font-mono)',
+          fontFamily: 'JetBrains Mono, monospace',
         }}
         showLineNumbers
         lineNumberStyle={{
           minWidth: '3em',
           paddingRight: '1em',
-          color: 'rgba(255, 255, 255, 0.1)',
+          color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.2)',
           textAlign: 'right',
           userSelect: 'none',
-          fontSize: '11px'
+          fontSize: '11px',
         }}
       >
         {code}

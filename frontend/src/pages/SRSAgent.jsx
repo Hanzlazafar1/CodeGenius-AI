@@ -86,7 +86,7 @@ export default function SRSAgent() {
                 <label className="form-label">Project Identifier</label>
                 <input
                   className="form-input"
-                  style={{ background: 'rgba(255, 255, 255, 0.03)', border: '1px solid var(--glass-border)', borderRadius: '8px', padding: '10px 14px', color: 'var(--text-primary)', width: '100%', fontSize: '13px' }}
+                  style={{ background: 'var(--bg-input)', border: '1px solid var(--glass-border)', borderRadius: '8px', padding: '10px 14px', color: 'var(--text-primary)', width: '100%', fontSize: '13px', outline: 'none', fontFamily: 'inherit', transition: 'var(--transition-smooth)' }}
                   placeholder="e.g. NextGen Core Architecture"
                   value={form.project_name}
                   onChange={(e) => setForm({ ...form, project_name: e.target.value })}
@@ -135,7 +135,7 @@ export default function SRSAgent() {
                 className="glass-card"
                 style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 320, borderStyle: 'dotted' }}
               >
-                <div style={{ padding: 24, background: 'rgba(255,255,255,0.02)', borderRadius: '50%', marginBottom: 20 }}>
+                <div style={{ padding: 24, background: 'var(--toggle-bg)', borderRadius: '50%', marginBottom: 20 }}>
                   <ClipboardCheck size={32} opacity={0.2} />
                 </div>
                 <h3 style={{ fontSize: 16, marginBottom: 8 }}>Workspace Ready</h3>

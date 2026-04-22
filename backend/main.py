@@ -29,9 +29,9 @@ load_dotenv(override=True)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("🚀 CodeGenius AI Backend starting up...")
+    print("STARTING: CodeGenius AI Backend...")
     yield
-    print("👋 CodeGenius AI Backend shutting down...")
+    print("STOPPING: CodeGenius AI Backend...")
 
 
 app = FastAPI(

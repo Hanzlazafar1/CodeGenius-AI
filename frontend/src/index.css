@@ -1,27 +1,27 @@
 /* ─── CodeGenius AI — Ultra-Premium Design System ─────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
-:root {
+/* ─── Dark Theme (Default) ──────────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
   /* Premium Zinc/Slate Palette */
   --bg-base: #09090b;
-  /* Zinc 950 */
   --bg-surface: rgba(17, 17, 19, 0.8);
   --bg-elevated: rgba(39, 39, 42, 0.4);
-  /* Zinc 800 */
   --bg-card: rgba(15, 15, 18, 0.5);
   --bg-hover: rgba(39, 39, 42, 0.6);
+  --bg-input: rgba(15, 23, 42, 0.3);
+  --bg-input-focus: rgba(15, 23, 42, 0.5);
+  --bg-tab-row: rgba(0, 0, 0, 0.2);
 
   /* Refined Accents */
   --primary: #6366f1;
-  /* Indigo 500 */
   --primary-hover: #818cf8;
   --primary-glow: rgba(99, 102, 241, 0.15);
   --secondary: #0ea5e9;
-  /* Sky 500 */
   --accent: #10b981;
-  /* Emerald 500 */
 
-  /* Semantic Agent Colors (Subtler) */
+  /* Semantic Agent Colors */
   --color-algo: #a78bfa;
   --color-explain: #7dd3fc;
   --color-bug: #fbbf24;
@@ -29,18 +29,45 @@
 
   /* Typography */
   --text-primary: #fafafa;
-  /* Zinc 50 */
   --text-secondary: #a1a1aa;
-  /* Zinc 400 */
   --text-muted: #52525b;
-  /* Zinc 600 */
 
   /* Surface Detailing */
   --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-border-hover: rgba(255, 255, 255, 0.1);
   --glass-blur: blur(12px);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Mesh gradient */
+  --mesh-c1: rgba(99, 102, 241, 0.05);
+  --mesh-c2: rgba(16, 185, 129, 0.03);
+  --mesh-c3: rgba(14, 165, 233, 0.04);
+
+  /* Header */
+  --header-bg: rgba(9, 9, 11, 0.4);
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(255, 255, 255, 0.05);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.1);
+
+  /* Toggle button */
+  --toggle-bg: rgba(255, 255, 255, 0.04);
+  --toggle-border: rgba(255, 255, 255, 0.08);
+  --toggle-hover-bg: rgba(255, 255, 255, 0.1);
+  --toggle-color: #a1a1aa;
+  --toggle-hover-color: #fafafa;
+
+  /* Inline code */
+  --inline-code-bg: rgba(255, 255, 255, 0.05);
+
+  /* Table */
+  --table-header-bg: rgba(255, 255, 255, 0.03);
+
+  /* Nav item hover */
+  --nav-hover-bg: rgba(255, 255, 255, 0.03);
+  --nav-active-bg: rgba(255, 255, 255, 0.05);
 
   /* Dimensions */
   --sidebar-w: 260px;
@@ -50,6 +77,73 @@
   --radius-md: 8px;
   --radius-sm: 4px;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Light Theme ────────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-base: #f4f4f8;
+  --bg-surface: rgba(255, 255, 255, 0.85);
+  --bg-elevated: rgba(228, 228, 236, 0.6);
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-hover: rgba(228, 228, 236, 0.8);
+  --bg-input: rgba(241, 241, 247, 0.8);
+  --bg-input-focus: rgba(255, 255, 255, 0.95);
+  --bg-tab-row: rgba(0, 0, 0, 0.04);
+
+  /* Accents — same hues, slightly more saturated for light bg */
+  --primary: #4f52e8;
+  --primary-hover: #6366f1;
+  --primary-glow: rgba(79, 82, 232, 0.2);
+  --secondary: #0284c7;
+  --accent: #059669;
+
+  /* Semantic Agent Colors — slightly deeper for contrast on light */
+  --color-algo: #7c3aed;
+  --color-explain: #0284c7;
+  --color-bug: #d97706;
+  --color-srs: #059669;
+
+  /* Typography */
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+
+  /* Surfaces */
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-hover: rgba(0, 0, 0, 0.15);
+  --glass-blur: blur(12px);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --shadow-premium: 0 10px 24px -4px rgba(0, 0, 0, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
+
+  /* Mesh gradient */
+  --mesh-c1: rgba(79, 82, 232, 0.06);
+  --mesh-c2: rgba(5, 150, 105, 0.04);
+  --mesh-c3: rgba(2, 132, 199, 0.05);
+
+  /* Header */
+  --header-bg: rgba(255, 255, 255, 0.6);
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(0, 0, 0, 0.12);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.22);
+
+  /* Toggle button */
+  --toggle-bg: rgba(0, 0, 0, 0.04);
+  --toggle-border: rgba(0, 0, 0, 0.1);
+  --toggle-hover-bg: rgba(79, 82, 232, 0.1);
+  --toggle-color: #52525b;
+  --toggle-hover-color: #4f52e8;
+
+  /* Inline code */
+  --inline-code-bg: rgba(79, 82, 232, 0.08);
+
+  /* Table */
+  --table-header-bg: rgba(0, 0, 0, 0.03);
+
+  /* Nav item hover */
+  --nav-hover-bg: rgba(0, 0, 0, 0.04);
+  --nav-active-bg: rgba(79, 82, 232, 0.08);
 }
 
 /* ─── Reset ────────────────────────────────────────────────────────────────── */
@@ -85,10 +179,11 @@ body {
   z-index: -1;
   background-color: var(--bg-base);
   background-image:
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 40%),
-    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.03) 0px, transparent 40%),
-    radial-gradient(at 100% 0%, rgba(14, 165, 233, 0.04) 0px, transparent 40%);
+    radial-gradient(at 0% 0%, var(--mesh-c1) 0px, transparent 40%),
+    radial-gradient(at 100% 100%, var(--mesh-c2) 0px, transparent 40%),
+    radial-gradient(at 100% 0%, var(--mesh-c3) 0px, transparent 40%);
   filter: blur(80px);
+  transition: background-color 0.4s ease;
 }
 
 /* ─── Layout Shell ─────────────────────────────────────────────────────────── */
@@ -224,12 +319,12 @@ body {
 }
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--nav-hover-bg);
   color: var(--text-primary);
 }
 
 .nav-item.active {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--nav-active-bg);
   color: var(--text-primary);
 }
 
@@ -287,7 +382,7 @@ body {
 /* ─── Header ───────────────────────────────────────────────────────────────── */
 .header {
   height: var(--header-h);
-  background: rgba(9, 9, 11, 0.4);
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--glass-border);
   display: flex;
@@ -296,6 +391,7 @@ body {
   gap: 16px;
   flex-shrink: 0;
   z-index: 40;
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .header-title h2 {
@@ -326,9 +422,68 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--toggle-bg);
   border: 1px solid var(--glass-border);
   color: var(--text-secondary);
+}
+
+/* ─── Theme Toggle Button ──────────────────────────────────────────────────── */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--toggle-bg);
+  border: 1px solid var(--toggle-border);
+  color: var(--toggle-color);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-family: inherit;
+  outline: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--toggle-hover-bg);
+  border-color: var(--primary);
+  color: var(--toggle-hover-color);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-btn:hover::before {
+  opacity: 0.04;
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.theme-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.theme-toggle-label {
+  line-height: 1;
 }
 
 /* ─── Cards & Containers ───────────────────────────────────────────────────── */
@@ -343,7 +498,7 @@ body {
 }
 
 .glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--glass-border-hover);
   transform: translateY(-2px);
 }
 
@@ -367,7 +522,7 @@ body {
 .input-field,
 .form-textarea,
 .form-select {
-  background: rgba(15, 23, 42, 0.3);
+  background: var(--bg-input);
   border: 1px solid var(--glass-border);
   border-radius: 14px;
   padding: 14px 18px;
@@ -389,8 +544,8 @@ body {
 .form-textarea:focus,
 .form-select:focus {
   border-color: var(--primary);
-  background: rgba(15, 23, 42, 0.5);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  background: var(--bg-input-focus);
+  box-shadow: 0 0 0 4px var(--primary-glow);
 }
 
 /* ─── Buttons ──────────────────────────────────────────────────────────────── */
@@ -428,7 +583,7 @@ body {
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-elevated);
 }
 
 .btn:disabled {
@@ -448,7 +603,7 @@ body {
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--toggle-bg);
   border: 1px solid var(--glass-border);
   border-radius: 99px;
   font-size: 11px;
@@ -463,7 +618,7 @@ body {
   line-height: 1.1;
   letter-spacing: -1.5px;
   margin-bottom: 20px;
-  background: linear-gradient(to bottom, #fff 0%, #a1a1aa 100%);
+  background: linear-gradient(to bottom, var(--text-primary) 0%, var(--text-secondary) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -527,16 +682,17 @@ body {
 }
 
 .agent-card:hover {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: var(--bg-hover);
+  border-color: var(--glass-border-hover);
   transform: translateY(-4px);
+  box-shadow: var(--shadow-premium);
 }
 
 .agent-card-icon {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--toggle-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -570,7 +726,7 @@ body {
   font-weight: 700;
   padding: 4px 8px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--toggle-bg);
   border: 1px solid var(--glass-border);
   text-transform: uppercase;
   letter-spacing: 0.3px;
@@ -599,7 +755,7 @@ body {
 .tab-row {
   display: flex;
   gap: 4px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--bg-tab-row);
   padding: 4px;
   border-radius: 10px;
   border: 1px solid var(--glass-border);
@@ -624,7 +780,7 @@ body {
 
 .tab-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--nav-hover-bg);
 }
 
 .tab-btn.active {
@@ -663,7 +819,7 @@ body {
 
 .markdown-body code:not(pre code) {
   font-family: 'JetBrains Mono', monospace;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--inline-code-bg);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.9em;
@@ -680,7 +836,7 @@ body {
 .markdown-body th {
   text-align: left;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--table-header-bg);
   border: 1px solid var(--glass-border);
   color: var(--text-primary);
   font-weight: 700;
@@ -695,7 +851,7 @@ body {
 /* ─── Attribution Card — Enhanced Design ───────────────────────────── */
 .attribution-card {
   position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: var(--bg-card);
   border: 1px solid var(--glass-border);
   border-radius: 12px;
   padding: 20px 32px;
@@ -706,9 +862,7 @@ body {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  box-shadow:
-    0 20px 40px -10px rgba(0, 0, 0, 0.5),
-    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-premium);
 }
 
 .attribution-glow {
@@ -748,36 +902,34 @@ body {
   font-family: 'Inter', sans-serif;
   letter-spacing: -0.5px;
   background: linear-gradient(90deg,
-      #fff 0%,
+      var(--text-primary) 0%,
       var(--primary) 30%,
-      #fff 60%,
+      var(--text-primary) 60%,
       var(--primary) 85%,
-      #fff 100%);
+      var(--text-primary) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 5s linear infinite;
-  text-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+  filter: drop-shadow(0 0 2px var(--primary-glow));
 }
 
 .name-areeba {
   font-family: 'Inter', sans-serif;
   letter-spacing: -0.5px;
   background: linear-gradient(90deg,
-      #fff 0%,
+      var(--text-primary) 0%,
       var(--accent) 30%,
-      #fff 60%,
+      var(--text-primary) 60%,
       var(--accent) 85%,
-      #fff 100%);
+      var(--text-primary) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 5s linear infinite reverse;
-  text-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+  filter: drop-shadow(0 0 2px rgba(16, 185, 129, 0.15));
 }
 
 @keyframes shimmer {
@@ -807,7 +959,7 @@ body {
 }
 
 .name-separator {
-  color: white;
+  color: var(--text-secondary);
   font-size: 14px;
   font-weight: 300;
   opacity: 0.7;
@@ -855,10 +1007,36 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--scrollbar-thumb);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* ─── Smooth theme transition on all elements ──────────────────────────────── */
+/* Applied only to non-animation elements to avoid breaking motion animations */
+body,
+body *:not([class*='motion']):not(svg):not(path) {
+  transition-property: background-color, border-color, color, box-shadow, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Light theme: select option background ─────────────────────────────── */
+[data-theme='light'] .form-select option {
+  background: #ffffff;
+  color: #18181b;
+}
+
+/* ─── Light theme: idle workspace bg ────────────────────────────────────── */
+[data-theme='light'] .glass-card {
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+/* ─── Light theme: app-shell gradient ───────────────────────────────────── */
+[data-theme='light'] .app-shell {
+  background: radial-gradient(circle at 50% -20%, rgba(79, 82, 232, 0.04) 0%, transparent 80%);
 }

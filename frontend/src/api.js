@@ -18,39 +18,47 @@ export async function callAgentStream(endpoint, body, { onStatus, onResult, onEr
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
-    })
+    });
 
     if (!response.ok) {
-      const errText = await response.text()
-      throw new Error(`Server error ${response.status}: ${errText}`)
+      const errText = await response.text();
+      throw new Error(`Server error ${response.status}: ${errText}`);
     }
 
-    const reader = response.body.getReader()
-    const decoder = new TextDecoder()
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
 
     while (true) {
-      const { value, done } = await reader.read()
-      if (done) break
+      const { value, done } = await reader.read();
+      if (done) break;
 
-      const chunk = decoder.decode(value, { stream: true })
-      const lines = chunk.split('\n').filter((l) => l.startsWith('data:'))
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      
+      // The last element is either an empty string (if buffer ends with \n)
+      // or a partial line. Keep it for the next chunk.
+      buffer = lines.pop();
 
       for (const line of lines) {
+        const trimmedLine = line.trim();
+        if (!trimmedLine || !trimmedLine.startsWith('data:')) continue;
+
         try {
-          const json = JSON.parse(line.slice(5).trim())
-          if (json.status === 'running') {
-            onStatus?.(json.message)
-          } else if (json.status === 'complete') {
-            onResult?.(json.result)
-          } else if (json.status === 'error') {
-            onError?.(json.message)
+          const data = JSON.parse(trimmedLine.slice(5).trim());
+          if (data.status === 'running') {
+            onStatus?.(data.message);
+          } else if (data.status === 'complete') {
+            onResult?.(data.result);
+          } else if (data.status === 'error') {
+            onError?.(data.message);
           }
-        } catch (_) {
-          /* skip malformed lines */
+        } catch (e) {
+          console.warn('Failed to parse SSE line:', trimmedLine, e);
         }
       }
     }
   } catch (err) {
-    onError?.(err.message || 'Unknown error')
+    onError?.(err.message || 'Unknown error');
   }
 }

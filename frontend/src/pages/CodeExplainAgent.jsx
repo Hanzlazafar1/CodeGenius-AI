@@ -115,7 +115,7 @@ export default function CodeExplainAgent() {
                 className="glass-card"
                 style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 320, borderStyle: 'dotted' }}
               >
-                <div style={{ padding: 24, background: 'rgba(255,255,255,0.02)', borderRadius: '50%', marginBottom: 20 }}>
+                <div style={{ padding: 24, background: 'var(--toggle-bg)', borderRadius: '50%', marginBottom: 20 }}>
                   <MessageSquare size={32} opacity={0.2} />
                 </div>
                 <h3 style={{ fontSize: 16, marginBottom: 8 }}>Vocalizing Input</h3>
@@ -147,7 +147,7 @@ export default function CodeExplainAgent() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '0 8px' }}>
                     <Terminal size={12} color="var(--text-muted)" />
                     <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600 }}>Detected Context:</span>
-                    <span style={{ padding: '2px 8px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: 6, fontSize: 10, fontWeight: 800, color: 'var(--color-explain)', border: '1px solid var(--glass-border)' }}>{result.detected_language}</span>
+                    <span style={{ padding: '2px 8px', background: 'var(--inline-code-bg)', borderRadius: 6, fontSize: 10, fontWeight: 800, color: 'var(--color-explain)', border: '1px solid var(--glass-border)' }}>{result.detected_language}</span>
                   </div>
                 )}
 
@@ -189,7 +189,7 @@ export default function CodeExplainAgent() {
                       {activeTab === 'summary' && (
                         <div style={{ 
                           padding: 24, 
-                          background: 'rgba(255, 255, 255, 0.02)', 
+                          background: 'var(--toggle-bg)', 
                           borderRadius: 12, 
                           fontSize: 14, 
                           lineHeight: 1.6, 

@@ -113,7 +113,7 @@ export default function LoadingSpinner({
                     display: 'flex', 
                     alignItems: 'center', 
                     gap: 12, 
-                    color: isActive ? 'var(--text-primary)' : isDone ? 'var(--text-dim)' : 'rgba(255,255,255,0.1)',
+                    color: isActive ? 'var(--text-primary)' : isDone ? 'var(--text-secondary)' : 'var(--text-muted)',
                     transition: 'color 0.3s ease'
                   }}
                 >
