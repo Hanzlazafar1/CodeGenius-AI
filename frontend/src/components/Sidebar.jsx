@@ -40,9 +40,9 @@ const AGENTS = [
   },
 ]
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, closeSidebar }) {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'sidebar-open' : ''}`}>
       {/* Logo Section */}
       <div className="sidebar-logo">
         <div className="logo-glow">
@@ -56,7 +56,7 @@ export default function Sidebar() {
 
       <nav className="sidebar-nav">
         <div className="sidebar-section-label">Main</div>
-        <NavLink to="/" end className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}>
+        <NavLink to="/" end className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`} onClick={closeSidebar}>
           {({ isActive }) => (
             <>
               {isActive && (
@@ -78,6 +78,7 @@ export default function Sidebar() {
             key={agent.path}
             to={agent.path}
             className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
+            onClick={closeSidebar}
           >
             {({ isActive }) => (
               <>

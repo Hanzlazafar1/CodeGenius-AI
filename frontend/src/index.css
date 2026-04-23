@@ -1040,3 +1040,144 @@ body *:not([class*='motion']):not(svg):not(path) {
 [data-theme='light'] .app-shell {
   background: radial-gradient(circle at 50% -20%, rgba(79, 82, 232, 0.04) 0%, transparent 80%);
 }
+
+/* ─── Responsive Styles ────────────────────────────────────────────────────── */
+
+.menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+}
+
+.menu-btn:hover {
+  background: var(--bg-hover);
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .agent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .agent-setup {
+    position: static;
+  }
+}
+
+@media (max-width: 860px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-premium);
+  }
+  
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+  
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 45;
+    backdrop-filter: blur(2px);
+  }
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header {
+    padding: 0 20px;
+    gap: 12px;
+  }
+  
+  .page-body {
+    padding: 24px 20px;
+  }
+
+  .home-hero h1 {
+    font-size: 38px;
+  }
+  
+  .home-hero p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-badges {
+    display: none;
+  }
+
+  .header-title h2 {
+    font-size: 14px;
+  }
+
+  .header-title p {
+    display: none;
+  }
+
+  .home-hero h1 {
+    font-size: 32px;
+  }
+
+  .stats-bar {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .agents-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .glass-card {
+    padding: 16px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .attribution-card {
+    padding: 16px;
+  }
+  
+  .attribution-main {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .name-separator {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-body {
+    padding: 16px;
+  }
+  
+  .home-hero h1 {
+    font-size: 28px;
+  }
+  
+  .home-hero p {
+    font-size: 14px;
+  }
+}

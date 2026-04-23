@@ -1,12 +1,15 @@
-import { Cpu, Zap, Sun, Moon } from 'lucide-react'
+import { Cpu, Zap, Sun, Moon, Menu } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function Header({ title, subtitle }) {
+export default function Header({ title, subtitle, toggleSidebar }) {
   const { theme, toggleTheme } = useTheme()
 
   return (
     <header className="header">
+      <button className="menu-btn" onClick={toggleSidebar} aria-label="Toggle Menu">
+        <Menu size={20} />
+      </button>
       <div className="header-title">
         <h2>{title}</h2>
         {subtitle && <p>{subtitle}</p>}

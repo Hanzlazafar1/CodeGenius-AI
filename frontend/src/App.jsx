@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ThemeProvider } from './context/ThemeContext'
@@ -19,7 +20,7 @@ const ROUTES = [
 
 export { ROUTES }
 
-function AnimatedRoutes() {
+function AnimatedRoutes({ toggleSidebar }) {
   const location = useLocation()
 
   return (
@@ -37,7 +38,7 @@ function AnimatedRoutes() {
                 transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
                 style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
               >
-                <Header title={title} subtitle={subtitle} />
+                <Header title={title} subtitle={subtitle} toggleSidebar={toggleSidebar} />
                 <div className="page-body">{element}</div>
               </motion.div>
             }
@@ -50,14 +51,19 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
   return (
     <ThemeProvider>
       <BrowserRouter>
         <div className="app-shell">
           <div className="mesh-bg" />
-          <Sidebar />
+          {isSidebarOpen && (
+            <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)} />
+          )}
+          <Sidebar isOpen={isSidebarOpen} closeSidebar={() => setIsSidebarOpen(false)} />
           <main className="main-content">
-            <AnimatedRoutes />
+            <AnimatedRoutes toggleSidebar={() => setIsSidebarOpen(prev => !prev)} />
           </main>
         </div>
       </BrowserRouter>
