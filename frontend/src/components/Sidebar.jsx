@@ -106,7 +106,7 @@ export default function Sidebar({ isOpen, closeSidebar }) {
           <span>Operational</span>
         </div>
         <div className="sidebar-attribution">
-          <span>Made with ❤️ Hanzla</span>
+          <span>Made with ❤️ by Hanzla</span>
         </div>
       </div>
     </aside>
