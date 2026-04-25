@@ -27,6 +27,8 @@ services:
       - backend
     networks:
       - codegenius-net
+    healthcheck:
+      disable: true   # 🔥 THIS FIXES YOUR ISSUE
 
 networks:
   codegenius-net:
