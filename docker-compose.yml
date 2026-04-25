@@ -1,34 +1,58 @@
 version: "3.9"
 
 services:
-  # ─── Backend ─────────────────────────────────────
+  # ─────────────────────────────────────
+  # BACKEND (FastAPI)
+  # ─────────────────────────────────────
   backend:
     image: hanzlazafar/backend:latest
     container_name: codegenius-backend
     restart: unless-stopped
+
     environment:
       - GROQ_API_KEY=${GROQ_API_KEY}
       - GROQ_MODEL=${GROQ_MODEL:-llama3-70b-8192}
       - APP_ENV=production
-      - CORS_ORIGINS=http://localhost,http://localhost:80,http://${EC2_PUBLIC_IP}
+
+      # IMPORTANT: FIX CORS (frontend + EC2 IP)
+      - CORS_ORIGINS=http://localhost,http://127.0.0.1,http://${EC2_PUBLIC_IP},http://${EC2_PUBLIC_IP}:80
+
     ports:
       - "8000:8000"
+
     networks:
       - codegenius-net
 
-  # ─── Frontend ────────────────────────────────────
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+
+  # ─────────────────────────────────────
+  # FRONTEND (React + Nginx)
+  # ─────────────────────────────────────
   frontend:
     image: hanzlazafar/frontend:latest
     container_name: codegenius-frontend
     restart: unless-stopped
+
     ports:
       - "80:80"
+
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+
     networks:
       - codegenius-net
+
+    # disable nginx healthcheck issues (your current fix)
     healthcheck:
-      disable: true   # 🔥 THIS FIXES YOUR ISSUE
+      disable: true
+
 
 networks:
   codegenius-net:
