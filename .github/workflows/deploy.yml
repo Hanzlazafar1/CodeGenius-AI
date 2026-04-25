@@ -23,7 +23,6 @@ jobs:
 
       # ---------------- SET IMAGE TAG ----------------
       - name: Set Image Tag
-        id: vars
         run: echo "TAG=$(date +%s)" >> $GITHUB_ENV
 
       # ---------------- BUILD BACKEND (NO CACHE) ----------------
@@ -66,13 +65,13 @@ jobs:
             echo "Removing old containers..."
             docker rm -f codegenius-backend codegenius-frontend || true
 
-            echo "Removing old images (cleanup)..."
+            echo "Cleaning old images..."
             docker image prune -af || true
 
             echo "Pulling latest images..."
             docker-compose pull
 
-            echo "Starting new deployment..."
-            docker-compose up -d --force-recreate
+            echo "Starting fresh deployment..."
+            docker-compose up -d --force-recreate --remove-orphans
 
             echo "Deployment successful 🚀"
