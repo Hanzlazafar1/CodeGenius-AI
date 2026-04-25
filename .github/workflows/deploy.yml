@@ -10,10 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ---------------- CHECKOUT ----------------
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # ---------------- LOGIN TO DOCKER HUB ----------------
+      # ---------------- LOGIN DOCKER HUB ----------------
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
@@ -46,9 +47,16 @@ jobs:
           script: |
             cd ~/CodeGenius-AI
 
+            echo "Stopping old containers..."
+            docker-compose down --remove-orphans || true
+
+            echo "Removing stuck containers..."
+            docker rm -f codegenius-backend codegenius-frontend || true
+
             echo "Pulling latest images..."
             docker-compose pull
 
-            echo "Restarting containers..."
-            docker-compose down
-            docker-compose up -d
+            echo "Starting fresh containers..."
+            docker-compose up -d --force-recreate
+
+            echo "Deployment completed successfully!"
