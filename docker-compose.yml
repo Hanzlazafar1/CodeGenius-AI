@@ -35,19 +35,17 @@ services:
   # FRONTEND (React + Nginx)
   # ─────────────────────────────────────
   frontend:
-    image: hanzlazafar/frontend:latest
-    container_name: codegenius-frontend
-    restart: unless-stopped
-
-    ports:
-      - "80:80"
-
-    depends_on:
-      backend:
-        condition: service_healthy
-
-    networks:
-      - codegenius-net
+  image: hanzlazafar/frontend:latest
+  container_name: codegenius-frontend
+  restart: unless-stopped
+  ports:
+    - "80:80"
+  environment:
+    - VITE_API_URL=http://98.86.232.203:8000
+  depends_on:
+    - backend
+  networks:
+    - codegenius-net
 
     # disable nginx healthcheck issues (your current fix)
     healthcheck:
