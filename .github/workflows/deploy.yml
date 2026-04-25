@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # ---------------- SET UNIQUE TAG ----------------
+      # ---------------- SET IMAGE TAG ----------------
       - name: Set Image Tag
         run: echo "TAG=$(date +%s)" >> $GITHUB_ENV
 
@@ -59,16 +59,22 @@ jobs:
           script: |
             cd ~/CodeGenius-AI
 
-            echo "🧹 Cleaning old containers..."
+            echo "🧹 Step 1: Stop all running containers"
+            docker-compose down --remove-orphans || true
+
+            echo "🧹 Step 2: Remove stuck containers manually"
             docker rm -f codegenius-backend codegenius-frontend || true
 
-            echo "🧹 Removing old images (optional cleanup)..."
+            echo "🧹 Step 3: Clean unused images (safe)"
             docker image prune -af || true
 
-            echo "📦 Pulling latest images..."
+            echo "📦 Step 4: Pull latest images from Docker Hub"
             docker-compose pull
 
-            echo "🚀 Starting fresh containers..."
+            echo "🚀 Step 5: Recreate containers cleanly"
             docker-compose up -d --force-recreate --remove-orphans
+
+            echo "🔍 Step 6: Show running containers"
+            docker ps
 
             echo "✅ Deployment completed successfully"
